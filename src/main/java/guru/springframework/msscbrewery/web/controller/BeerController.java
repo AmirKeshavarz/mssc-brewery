@@ -11,23 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
-/**
- * Created by jt on 2019-04-20.
- */
-@RequestMapping("/api/v1/beer")
 @RestController
+@RequestMapping("/api/v1/beer")
 public class BeerController {
 
-    private final BeerService beerService;
+	private final BeerService beerService;
 
-    public BeerController(BeerService beerService) {
-        this.beerService = beerService;
-    }
+	public BeerController(BeerService beerService) {
+		this.beerService = beerService;
+	}
 
-    @GetMapping({"/{beerId}"})
-    public ResponseEntity<BeerDto> getBeer(@PathVariable("beerId") UUID beerId){
-
-        return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
-    }
+	@GetMapping("/{beerId}")
+	public ResponseEntity<BeerDto> getBeer(@PathVariable("beerId") UUID beerId) {
+		return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
+	}
 
 }
